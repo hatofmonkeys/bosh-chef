@@ -1,0 +1,6 @@
+---
+name: chef-client
+
+dependencies:
+
+files:
