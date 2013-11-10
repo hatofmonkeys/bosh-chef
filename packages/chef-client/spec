@@ -1,6 +1,6 @@
 ---
 name: chef-client
-
 dependencies:
-
+    - ruby
 files:
+    - chef-client/**/*
