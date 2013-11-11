@@ -1,7 +1,13 @@
 ---
 name: chef-server
 templates:
-    bin/chef-server_ctl: bin/chef-server_ctl
-    bin/chef-server.sh: bin/chef-server.sh
+  bin/chef-server_ctl: bin/chef-server_ctl
+  bin/chef-server.sh: bin/chef-server.sh
+  config/chef-validator.pem.erb: config/chef-validator.pem
 packages:
     - chef-server
+properties:
+  chef-server.url:
+    description: "URL for the chef server HTTPS endpoint"
+  chef-server.validation_key:
+    description: "Validation key to register chef nodes"

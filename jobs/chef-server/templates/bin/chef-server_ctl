@@ -32,7 +32,9 @@ case $1 in
 
       chmod 777 /tmp
 
-cat <<EOF>/tmp/dna.json
+      [ -d /etc/chef-server ] || mkdir /etc/chef-server
+
+cat <<EOF>/etc/chef-server/dna.json
 {
   "run_list": [ "recipe[chef-server]" ],
   "chef_server": {
@@ -43,45 +45,15 @@ cat <<EOF>/tmp/dna.json
 }
 EOF
 
-      [ -d /etc/chef-server ] || mkdir /etc/chef-server
 
-cat <<EOF>/tmp/chef-validator.pem
------BEGIN RSA PRIVATE KEY-----
-MIIEowIBAAKCAQEA4SfPIEJInJ051FazGtnGyTmSxDAPVVgHSTAcrKiRmaSn7WoN
-/0B1R04SLJBjiQB2GEGyBoZ+U+QeDxwbv9vlc1Y5J/d/56cMzt9p+goJiz4DiMBI
-nukwy0wh86+KMwlwh/+CVkayfuweWjaQ7TGNFYhiWt16SoUXj/c7mLTHnNoou0E9
-KPazpgAminzOmLq0q/CGD5J8+cri7MYwZkLUVLQpWRah3tboK819kPaae1RktHye
-DxaYN6C/ayPx00J33Elppi9RBv+6yLD7WS6czVTAOZ87I80h3VH+W4KUpdi19dWC
-xwpOgq9ZO1JA3ReWrxU/ucu+eqEblLR14UIYNQIDAQABAoIBACs/Jj2f/ap3WKA8
-dvJ1WgVUlagxQwC1g9C++QMA7daBFfA4KrAYhW5IxJzirvulpwlJtRQjySf77Poi
-AAJ+Djh1G01d8KdiIsepigWI4ARqyOr/Y/OB/ulNmkfgM79R1NeKcFJ6CdbvK3VQ
-fc3RcrPsGlgxqkeeAMSaTEwsjRrHQCB7FvDSUSHN3njs0Q6/gVifJtoirLKZuE40
-KDeKalM9XCNt15acW6Xj8zjW9wrAPK8D6fZYlp7FxFxO5XjhD2gqd5afkniFlX6X
-W/SaQZYzjLZclnqoPv5tsiLWzmXpYrwjTCwKEanauIR6tVAMx68koMOlWv2Z9NGS
-aeJkMBECgYEA/o4JGllk3g6e7iZ6VMNmdAGBP2KID/57TsLWZIajWOFq3DvoPh4v
-G+3lyTAvAnPc+Knu2BnN2489nXddFYFBhg5K2Nfr6DOf2vtDryPX+ZlTccFGkF1s
-KZl0kgtlP8boOzGDd6CXKpNYtib6zt56caD6GxNhrvXdrcHkOWauddcCgYEA4m8L
-kcU2hd5VvqNkyNSV5eEr2ZAhoigqWAy5PpRSu9gALsFhk7z+9MnUpY6Ioimlo4kJ
-Zrxe2ADinxqDYzLgpNM+baQ5TNcdiQBVP5mtEK/0jp1AaJLUnLHp8Gj82Uoo1xCq
-DheZVsdOx4oRH/C+A7RK0IgHVSxR0aVv7pzxyNMCgYBhTjI0nE9ugvBF4PeKR1d2
-qMybSjLwyjqglOIXc1AlvaV3on7Yn/kqF/pqubx+l4O0mmDuwo5qi4rmEqbGfa5q
-bDQ4R/GpxXIp5zqsTGtWwkGfjl5G+S9Lh5mD6k893e8QEZFLvVuLrt+OYcAmK+1q
-WjrA9tu0Yc/nh+KR/qpZ6QKBgQCc1c9Moy11oZ8AUUoQdHZy5/ioU9WH7IwPuphg
-SPnZE+5kdBsy6jgpstYv6b6nm3MYB2XUm+qRcGOHUiTpA6dnYs2dwZ7SozjY2Lsz
-Ny0RHt6kHTUseW78LZrcostncZ9B/0/aPOw/mALv4Kil1+i0xh7/uwhhLTZqoE0c
-F+a8cwKBgAmRN4hRiM3tdXtCBt+HA4BxjiZFKwwGO0jzQoTDcySNFNC4g7U1sp7S
-qKHN6efFAmT0R2IUNow/4bczajtCCofWGbN8gVlCafi+zDdqFL+DcvQa0w+CRLi3
-l4Vg9fLcviYsyq1HnLDTTguagah23Wp9Y54VCabTEK2gaLAsfrZJ
------END RSA PRIVATE KEY-----
-EOF
 
-      chmod 600 /tmp/chef-validator.pem
+      chmod 600 /var/vcap/jobs/chef-server/config/chef-validator.pem
 
-      [ -L /etc/chef-server/chef-validator.pem ] || ln -s /tmp/chef-validator.pem /etc/chef-server/chef-validator.pem
+      [ -L /etc/chef-server/chef-validator.pem ] || ln -s /var/vcap/jobs/chef-server/config/chef-validator.pem /etc/chef-server/chef-validator.pem
 
       sysctl -w "kernel.shmmax=284934144"
 
-      /opt/chef-server/embedded/bin/chef-solo -c /opt/chef-server/embedded/cookbooks/solo.rb -j /tmp/dna.json
+      /opt/chef-server/embedded/bin/chef-solo -c /opt/chef-server/embedded/cookbooks/solo.rb -j /etc/chef-server/dna.json
     fi
 
     mkdir -p $RUN_DIR

@@ -1,3 +1,4 @@
+name: chef-warden
 compilation:
   cloud_properties:
     name: random
@@ -20,10 +21,6 @@ jobs:
   name: chef_client
   networks:
   - name: chef1
-    static_ips:
-    - 10.244.0.6
-    - 10.244.0.10
-    - 10.244.0.14
   persistent_disk: 4096
   properties: {}
   resource_pool: medium
@@ -32,7 +29,54 @@ meta:
   stemcell:
     name: bosh-stemcell
     version: latest
-name: chef-warden
+properties:
+  chef-server:
+    url: https://10.244.0.2/
+    validation_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEowIBAAKCAQEA4SfPIEJInJ051FazGtnGyTmSxDAPVVgHSTAcrKiRmaSn7WoN
+      /0B1R04SLJBjiQB2GEGyBoZ+U+QeDxwbv9vlc1Y5J/d/56cMzt9p+goJiz4DiMBI
+      nukwy0wh86+KMwlwh/+CVkayfuweWjaQ7TGNFYhiWt16SoUXj/c7mLTHnNoou0E9
+      KPazpgAminzOmLq0q/CGD5J8+cri7MYwZkLUVLQpWRah3tboK819kPaae1RktHye
+      DxaYN6C/ayPx00J33Elppi9RBv+6yLD7WS6czVTAOZ87I80h3VH+W4KUpdi19dWC
+      xwpOgq9ZO1JA3ReWrxU/ucu+eqEblLR14UIYNQIDAQABAoIBACs/Jj2f/ap3WKA8
+      dvJ1WgVUlagxQwC1g9C++QMA7daBFfA4KrAYhW5IxJzirvulpwlJtRQjySf77Poi
+      AAJ+Djh1G01d8KdiIsepigWI4ARqyOr/Y/OB/ulNmkfgM79R1NeKcFJ6CdbvK3VQ
+      fc3RcrPsGlgxqkeeAMSaTEwsjRrHQCB7FvDSUSHN3njs0Q6/gVifJtoirLKZuE40
+      KDeKalM9XCNt15acW6Xj8zjW9wrAPK8D6fZYlp7FxFxO5XjhD2gqd5afkniFlX6X
+      W/SaQZYzjLZclnqoPv5tsiLWzmXpYrwjTCwKEanauIR6tVAMx68koMOlWv2Z9NGS
+      aeJkMBECgYEA/o4JGllk3g6e7iZ6VMNmdAGBP2KID/57TsLWZIajWOFq3DvoPh4v
+      G+3lyTAvAnPc+Knu2BnN2489nXddFYFBhg5K2Nfr6DOf2vtDryPX+ZlTccFGkF1s
+      KZl0kgtlP8boOzGDd6CXKpNYtib6zt56caD6GxNhrvXdrcHkOWauddcCgYEA4m8L
+      kcU2hd5VvqNkyNSV5eEr2ZAhoigqWAy5PpRSu9gALsFhk7z+9MnUpY6Ioimlo4kJ
+      Zrxe2ADinxqDYzLgpNM+baQ5TNcdiQBVP5mtEK/0jp1AaJLUnLHp8Gj82Uoo1xCq
+      DheZVsdOx4oRH/C+A7RK0IgHVSxR0aVv7pzxyNMCgYBhTjI0nE9ugvBF4PeKR1d2
+      qMybSjLwyjqglOIXc1AlvaV3on7Yn/kqF/pqubx+l4O0mmDuwo5qi4rmEqbGfa5q
+      bDQ4R/GpxXIp5zqsTGtWwkGfjl5G+S9Lh5mD6k893e8QEZFLvVuLrt+OYcAmK+1q
+      WjrA9tu0Yc/nh+KR/qpZ6QKBgQCc1c9Moy11oZ8AUUoQdHZy5/ioU9WH7IwPuphg
+      SPnZE+5kdBsy6jgpstYv6b6nm3MYB2XUm+qRcGOHUiTpA6dnYs2dwZ7SozjY2Lsz
+      Ny0RHt6kHTUseW78LZrcostncZ9B/0/aPOw/mALv4Kil1+i0xh7/uwhhLTZqoE0c
+      F+a8cwKBgAmRN4hRiM3tdXtCBt+HA4BxjiZFKwwGO0jzQoTDcySNFNC4g7U1sp7S
+      qKHN6efFAmT0R2IUNow/4bczajtCCofWGbN8gVlCafi+zDdqFL+DcvQa0w+CRLi3
+      l4Vg9fLcviYsyq1HnLDTTguagah23Wp9Y54VCabTEK2gaLAsfrZJ
+      -----END RSA PRIVATE KEY-----
+releases:
+- name: chef
+  version: latest
+resource_pools:
+- cloud_properties:
+    name: random
+  name: medium
+  network: chef1
+  size: 4
+  stemcell:
+    name: bosh-stemcell
+    version: latest
+update:
+  canaries: 1
+  canary_watch_time: 30000-600000
+  max_in_flight: 10
+  update_watch_time: 5000-600000
 networks:
 - name: chef1
   subnets:
@@ -256,22 +300,3 @@ networks:
     - 10.244.0.150
     - 10.244.0.154
     - 10.244.0.158
-properties:
-  {}
-releases:
-- name: chef
-  version: latest
-resource_pools:
-- cloud_properties:
-    name: random
-  name: medium
-  network: chef1
-  size: 4
-  stemcell:
-    name: bosh-stemcell
-    version: latest
-update:
-  canaries: 1
-  canary_watch_time: 30000-600000
-  max_in_flight: 10
-  update_watch_time: 5000-600000

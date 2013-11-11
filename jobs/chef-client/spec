@@ -1,8 +1,15 @@
 ---
 name: chef-client
 templates:
-    bin/chef-client_ctl: bin/chef-client_ctl
-    bin/chef-client.sh: bin/chef-client.sh
+  bin/chef-client_ctl: bin/chef-client_ctl
+  bin/chef-client.sh: bin/chef-client.sh
+  config/validation.pem.erb: config/validation.pem
+  config/client.rb.erb: config/client.rb
 packages:
   - chef-client
   - ruby
+properties:
+  chef-server.url:
+    description: "URL for the chef server HTTPS endpoint"
+  chef-server.validation_key:
+    description: "Validation key to register chef nodes"

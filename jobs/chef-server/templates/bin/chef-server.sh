@@ -40,7 +40,7 @@ while true
   do
     sysctl -w "kernel.shmmax=284934144"
 
-    /opt/chef-server/embedded/bin/chef-solo -c /opt/chef-server/embedded/cookbooks/solo.rb -j /tmp/dna.json
+    /opt/chef-server/embedded/bin/chef-solo -c /opt/chef-server/embedded/cookbooks/solo.rb -j /etc/chef-server/dna.json
 
     sleep 180
   done
