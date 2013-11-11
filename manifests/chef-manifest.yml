@@ -7,7 +7,7 @@ compilation:
 director_uuid: 9ba8cbe4-9db2-41fc-8f8d-7b0837cc4dc3
 jobs:
 - instances: 1
-  name: test_chef
+  name: chef_server
   networks:
   - name: chef1
     static_ips:
@@ -15,9 +15,9 @@ jobs:
   persistent_disk: 4096
   properties: {}
   resource_pool: medium
-  template: chef-client
+  template: chef-server
 - instances: 1
-  name: test_chef_server
+  name: chef_client
   networks:
   - name: chef1
     static_ips:
@@ -25,7 +25,7 @@ jobs:
   persistent_disk: 4096
   properties: {}
   resource_pool: medium
-  template: chef-server
+  template: chef-client
 meta:
   stemcell:
     name: bosh-stemcell

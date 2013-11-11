@@ -1,0 +1,5 @@
+check process chef-server
+  with pidfile /var/vcap/sys/run/chef-server/chef-server.pid
+  start program "/var/vcap/jobs/chef-server/bin/chef-server_ctl start" with timeout 180 seconds
+  stop program "/var/vcap/jobs/chef-server/bin/chef-server_ctl stop"
+  group vcap

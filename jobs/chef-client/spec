@@ -1,7 +1,8 @@
 ---
 name: chef-client
 templates:
-  config/dummy.yml: config/dummy.yml
+    bin/chef-client_ctl: bin/chef-client_ctl
+    bin/chef-client.sh: bin/chef-client.sh
 packages:
   - chef-client
   - ruby

@@ -1,6 +1,7 @@
 ---
 name: chef-server
 templates:
-    config/dummy.yml: config/dummy.yml
+    bin/chef-server_ctl: bin/chef-server_ctl
+    bin/chef-server.sh: bin/chef-server.sh
 packages:
     - chef-server
