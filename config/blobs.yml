@@ -1,21 +1,26 @@
 ---
+chef-server/chef-server_11.0.8-1.tgz:
+  object_id: d87fdf77-49db-4047-b315-bc71e2c4227b
+  sha: !binary |-
+    MDAzZDVlODNjMTYwN2M3NjQ3ZDI3MTAyYzk1M2JkNzcxOWY0NDEwMg==
+  size: 196911084
 libyaml/yaml-0.1.4.tgz:
-  object_id: 281f1551-254a-40dc-bf37-180c145d5ee8
+  object_id: 1a156ea4-e285-4fb5-9500-e966b4d5ab78
   sha: !binary |-
     ZTBlNWUwOTE5MmFiMTBhNjA3ZTNkYTI5NzBkYjQ5MjExOGY1NjBmMg==
   size: 471759
 ruby/bundler-1.2.1.gem:
-  object_id: e5689310-6a80-4c96-aa5b-cf0364f45500
+  object_id: 7442defc-7d10-4716-ba8c-008f5534dc2d
   sha: !binary |-
     MGNiZTZhZDdhNDFmMDY0ZDZjMTFjMTA1ODQ2NWZmZmIxYmQ1ODA2OQ==
   size: 226816
 ruby/ruby-1.9.3-p448.tar.gz:
-  object_id: 3fdd3180-4e5d-4181-862b-55ef34a433a1
+  object_id: e8e85af5-cceb-41b0-8c4c-3246dfcc2148
   sha: !binary |-
     YzdmNzM2ZTNiYzFjYTFlNjYxOWE5MTIxODM3ZGQwODQwYWFkNzdjZQ==
   size: 12559260
 ruby/rubygems-1.8.24.tgz:
-  object_id: 6a14948d-daee-4647-a309-cae78b9ce12f
+  object_id: 85cd7ca9-a7d3-42b7-b273-38066198f18c
   sha: !binary |-
     MzBmMjcwNDdlNzRmNzk0MzExNzczNmEwZDNlMjI0OTk0ZmVlMDkwNQ==
   size: 380101

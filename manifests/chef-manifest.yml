@@ -16,6 +16,16 @@ jobs:
   properties: {}
   resource_pool: medium
   template: chef-client
+- instances: 1
+  name: test_chef_server
+  networks:
+  - name: chef1
+    static_ips:
+    - 10.244.0.6
+  persistent_disk: 4096
+  properties: {}
+  resource_pool: medium
+  template: chef-server
 meta:
   stemcell:
     name: bosh-stemcell
@@ -254,7 +264,7 @@ resource_pools:
     name: random
   name: medium
   network: chef1
-  size: 1
+  size: 2
   stemcell:
     name: bosh-stemcell
     version: latest

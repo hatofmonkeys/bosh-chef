@@ -1,0 +1,5 @@
+---
+name: chef-server
+
+files:
+  - chef-server/chef-server_11.0.8-1.tgz

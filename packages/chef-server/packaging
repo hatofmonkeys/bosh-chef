@@ -1,0 +1,3 @@
+set -e -x
+
+tar xzf chef-server/chef-server_11.0.8-1.tgz -C ${BOSH_INSTALL_TARGET}

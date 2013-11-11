@@ -2,4 +2,4 @@
 blobstore:
   provider: local
   options:
-    blobstore_path: /tmp/blobstore
+    blobstore_path: ~/tmp/blobstore

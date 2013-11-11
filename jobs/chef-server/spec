@@ -1,0 +1,6 @@
+---
+name: chef-server
+templates:
+    config/dummy.yml: config/dummy.yml
+packages:
+    - chef-server
