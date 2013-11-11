@@ -55,6 +55,9 @@ validation_client_name 'chef-validator'
 EOF
   [ -L /etc/chef/client.rb ] || ln -s /tmp/client.rb /etc/chef/client.rb
 
+  #send localhost to the back of the fqdn queue - so multiple clients can register
+  /bin/sed -ri 's/127.0.0.1 localhost (.*)/127.0.0.1 \1 localhost/g' /etc/hosts
+
   ${JOB_DIR}/bin/chef-client.sh \
   >>$LOG_DIR/chef-client.log & 2>&1
 

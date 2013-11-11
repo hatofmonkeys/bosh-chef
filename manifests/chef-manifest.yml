@@ -16,12 +16,14 @@ jobs:
   properties: {}
   resource_pool: medium
   template: chef-server
-- instances: 1
+- instances: 3
   name: chef_client
   networks:
   - name: chef1
     static_ips:
     - 10.244.0.6
+    - 10.244.0.10
+    - 10.244.0.14
   persistent_disk: 4096
   properties: {}
   resource_pool: medium
@@ -264,12 +266,12 @@ resource_pools:
     name: random
   name: medium
   network: chef1
-  size: 2
+  size: 4
   stemcell:
     name: bosh-stemcell
     version: latest
 update:
   canaries: 1
   canary_watch_time: 30000-600000
-  max_in_flight: 1
+  max_in_flight: 10
   update_watch_time: 5000-600000
