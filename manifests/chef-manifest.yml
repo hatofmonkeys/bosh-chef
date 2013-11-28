@@ -1,11 +1,28 @@
 name: chef-warden
+releases:
+- name: chef
+  version: latest
+director_uuid: 9ba8cbe4-9db2-41fc-8f8d-7b0837cc4dc3
+resource_pools:
+- cloud_properties:
+    name: random
+  name: medium
+  network: chef1
+  size: 4
+  stemcell:
+    name: bosh-stemcell
+    version: latest
+update:
+  canaries: 1
+  canary_watch_time: 30000-600000
+  max_in_flight: 10
+  update_watch_time: 5000-600000
 compilation:
   cloud_properties:
     name: random
   network: chef1
   reuse_compilation_vms: true
   workers: 6
-director_uuid: 9ba8cbe4-9db2-41fc-8f8d-7b0837cc4dc3
 jobs:
 - instances: 1
   name: chef_server
@@ -60,23 +77,6 @@ properties:
       qKHN6efFAmT0R2IUNow/4bczajtCCofWGbN8gVlCafi+zDdqFL+DcvQa0w+CRLi3
       l4Vg9fLcviYsyq1HnLDTTguagah23Wp9Y54VCabTEK2gaLAsfrZJ
       -----END RSA PRIVATE KEY-----
-releases:
-- name: chef
-  version: latest
-resource_pools:
-- cloud_properties:
-    name: random
-  name: medium
-  network: chef1
-  size: 4
-  stemcell:
-    name: bosh-stemcell
-    version: latest
-update:
-  canaries: 1
-  canary_watch_time: 30000-600000
-  max_in_flight: 10
-  update_watch_time: 5000-600000
 networks:
 - name: chef1
   subnets:
