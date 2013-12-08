@@ -1,0 +1,19 @@
+{
+    "run_list": [ "recipe[chef-server]" ],
+    "chef_server": {
+        "postgresql": {
+            "shared_buffers": "32MB"
+        },
+        "api_fqdn": "<%= p("chef-server.host") %>",
+        "bookshelf": {
+            "vip": "<%= p("chef-server.host") %>"
+        },
+        "nginx": {
+            "url": "https://<%= p("chef-server.host") %>/",
+            "server_name": "<%= p("chef-server.host") %>"
+        },
+        "lb": {
+            "fqdn": "<%= p("chef-server.host") %>"
+        }
+    }
+}

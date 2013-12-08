@@ -9,7 +9,7 @@ packages:
   - chef-client
   - ruby
 properties:
-  chef-server.url:
-    description: "URL for the chef server HTTPS endpoint"
+  chef-server.host:
+    description: "Hostname for the chef server HTTPS endpoint - use .xip.io if no DNS available"
   chef-server.validation_key:
     description: "Validation key to register chef nodes"

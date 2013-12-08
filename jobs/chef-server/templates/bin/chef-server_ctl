@@ -34,18 +34,7 @@ case $1 in
 
       [ -d /etc/chef-server ] || mkdir /etc/chef-server
 
-cat <<EOF>/etc/chef-server/dna.json
-{
-  "run_list": [ "recipe[chef-server]" ],
-  "chef_server": {
-    "postgresql": {
-      "shared_buffers": "32MB"
-    }
-  }
-}
-EOF
-
-
+      [ -L /etc/chef-server/dna.json ] || ln -s /var/vcap/jobs/chef-server/config/dna.json /etc/chef-server/dna.json
 
       chmod 600 /var/vcap/jobs/chef-server/config/chef-validator.pem
 

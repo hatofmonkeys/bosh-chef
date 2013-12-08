@@ -2,7 +2,7 @@ name: chef-warden
 releases:
 - name: chef
   version: latest
-director_uuid: 9ba8cbe4-9db2-41fc-8f8d-7b0837cc4dc3
+director_uuid: d235f4e9-fc81-4924-b331-3712f16611ec
 resource_pools:
 - cloud_properties:
     name: random
@@ -29,7 +29,7 @@ jobs:
   networks:
   - name: chef1
     static_ips:
-    - 10.244.0.2
+    - 10.244.0.30
   persistent_disk: 4096
   properties: {}
   resource_pool: medium
@@ -48,7 +48,7 @@ meta:
     version: latest
 properties:
   chef-server:
-    url: https://10.244.0.2/
+    host: 10.244.0.30.xip.io
     validation_key: |
       -----BEGIN RSA PRIVATE KEY-----
       MIIEowIBAAKCAQEA4SfPIEJInJ051FazGtnGyTmSxDAPVVgHSTAcrKiRmaSn7WoN
