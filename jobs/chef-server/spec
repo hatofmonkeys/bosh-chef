@@ -1,7 +1,7 @@
 ---
 name: chef-server
 templates:
-  bin/chef-server_ctl: bin/chef-server_ctl
+  bin/chef-server_ctl.erb: bin/chef-server_ctl
   bin/chef-server.sh: bin/chef-server.sh
   config/chef-validator.pem.erb: config/chef-validator.pem
   config/dna.json.erb: config/dna.json

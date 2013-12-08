@@ -11,6 +11,10 @@ export HOME=/root
 case $1 in
 
   start)
+
+    #send localhost to the back of the fqdn queue - so redirects from the server aren't to localhost
+    /bin/sed -ri 's/127.0.0.1 localhost (.*)/127.0.0.1 <%= p("chef-server.host") %> \1 localhost/g' /etc/hosts
+
     if [ ! -f /etc/chef-server/chef-server-running.json ]; then
       kill `ps aux | grep "run[\s]vdir -P /etc/service" | awk '{print $2}'` || true
 
