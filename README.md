@@ -59,6 +59,7 @@ $ bosh deploy
 - Write the admin key you saved earlier to ~/admin.key
 - Write the validation key from the manifest's properties section to ~/validation.key . You may need to remove the leading whitespace from the key.
 - Configure your client - the output will differ by username
+
 ```
 ~ $ knife configure -i
 WARNING: No knife configuration file found
@@ -76,6 +77,7 @@ Created user[vagrant]
 Configuration file written to /home/vagrant/.chef/knife.rb
 ```
 - Create and upload a cookbook
+
 ```
 $ mkdir ~/chef-repo
 
