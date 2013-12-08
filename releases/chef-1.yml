@@ -1,0 +1,49 @@
+---
+packages:
+- name: chef-client
+  version: 1
+  sha1: !binary |-
+    MzBjY2EzMmYyNGFjOGI5Yzg0ZDg1ZDRjOTdkOTAzMTZkZTdiYTMzZg==
+  fingerprint: !binary |-
+    YmRkNmZjMWY3MmU3NjhjMjU0YjExYmQyYmU1MGM2ODc3YzU0NzEwYw==
+  dependencies:
+  - ruby
+- name: libyaml
+  version: 1
+  sha1: !binary |-
+    ZWZjMjlkZDMyNGYxYjdkODEyYWY1ZmU5ZDc4MWM4NDJhMWY4MmE4ZA==
+  fingerprint: !binary |-
+    MmM4MzUwYmM2YjYwYjdjNTBmMmI5ZDdkMTllZDAyZTE5YjcyYmYzOA==
+  dependencies: []
+- name: chef-server
+  version: 1
+  sha1: !binary |-
+    MmRhOWQ2Yzc5NWJjYjMyYjAzYzM5ZmViOTgwZjRlYjUzZTM3ODllNQ==
+  fingerprint: !binary |-
+    MDQzZDZkYjQ0NDkyNTViYzVlYmYxMjI5YWFlNTI1NjY0MTVhMTE0Yg==
+  dependencies: []
+- name: ruby
+  version: 1
+  sha1: !binary |-
+    OWE0NWU0YjJlNzIyMTk1ODdhZjIzZmNkY2RjY2VhZDlkOGQ2MWFiNQ==
+  fingerprint: !binary |-
+    MmFlYjYwNGM5Y2JiMmNiN2QyN2JlZDJlOTJkOWQ4YzkxM2U0NDg4Zg==
+  dependencies:
+  - libyaml
+jobs:
+- name: chef-client
+  version: 1
+  fingerprint: !binary |-
+    ZGQ4MjMwYjBmMDliODhjMzJiNjliMjNhMDZhZjAyNjBiNjE1OWQ5Yw==
+  sha1: !binary |-
+    OTIyNjU0MDE3NWU1YTE4MzgxZjgzZDQ5MjFlY2UyYzJjOTE3MGFkMQ==
+- name: chef-server
+  version: 1
+  fingerprint: !binary |-
+    NzE5MzNmYmUyY2NiMjIzYmE5NTgzNDczZTk2N2M5ZDcyYmJkMDIyOA==
+  sha1: !binary |-
+    N2ExNmQxNmViNGM4ZjM2NGNmZjQyYWNjM2U2ZmJlN2Y3NzgzZWQ3MA==
+commit_hash: 47e43ebb
+uncommitted_changes: true
+name: chef
+version: 1
