@@ -23,7 +23,7 @@ Director
 
 Copy the manifest (manifests/chef-manifest.yml) to your own deployments directory, and customise to your BOSH environment. For example:-
 ```
-~/chef-release $ cp manifests/chef-manifest.yml ~
+~/bosh-chef $ cp manifests/chef-manifest.yml ~
 $ sed -i "s/d235f4e9-fc81-4924-b331-3712f16611ec/`bosh status | grep UUID | awk '{print $2}'`/g" ~/chef-manifest.yml
 ```
 Ensure you have connectivity to the assigned networks.
@@ -34,9 +34,9 @@ The routing table can get flushed when starting/stopping virtual machines with s
 
 ### 3. Deploy
 
-Upload the release
+Upload a version of the release
 ```
-chef-release $ bosh upload release
+bosh-chef $ bosh upload release releases/chef-1.yml
 ```
 Deploy the cluster
 ```
@@ -56,8 +56,8 @@ $ bosh deploy
 ### 5. Configure client and upload cookbook
 
 - Install the [Chef Client](http://www.opscode.com/chef/install/) on your machine.
-- Write the admin key you saved earlier to ~/admin.key
-- Write the validation key from the manifest's properties section to ~/validation.key . You may need to remove the leading whitespace from the key.
+- Write the admin key you saved earlier to ~/admin.pem
+- Write the validation key from the manifest's properties section to ~/validator.pem . You may need to remove the leading whitespace from the key.
 - Configure your client - the output will differ by username
 
 ```
@@ -94,11 +94,11 @@ $ knife cookbook upload apache -V
 
 - Log back in to the [nodes page](https://10.244.0.30.xip.io/nodes)
 - Select the first node - usually [node 0](https://10.244.0.30.xip.io/nodes/0.chef-client.chef1.chef-warden.bosh).
-- Edit the node and apply the apache recipe from the cookbook you uploaded. Save the node.
+- Edit the node and add the apache recipe from the cookbook you uploaded to the run list. Save the node.
 
 ### 7. Wait for convergence and bask in the glow of your own brilliance
 
-If you've used BOSH-Lite and have the routes in place you should be able to [view a default apache page on the node you edited](http://10.244.0.50/) once the node has converged. Doing something useful with the cluster is left as an exercise for the reader.
+If you've used BOSH-Lite and have the routes in place you should be able to [view a default apache page on the node you edited](http://10.244.0.50/) once the node has converged (up to three minutes). Doing something useful with the cluster is left as an exercise for the reader.
 
 ### 8. Scale the cluster up
 
