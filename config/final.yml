@@ -1,5 +1,5 @@
 ---
 blobstore:
-  provider: local
+  provider: s3
   options:
-    blobstore_path: ~/tmp/blobstore
+    bucket_name: blob.chef.bosh
