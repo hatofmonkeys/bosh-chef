@@ -1,7 +1,7 @@
 ---
 name: chef-client
 templates:
-  bin/chef-client_ctl: bin/chef-client_ctl
+  bin/chef-client_ctl.erb: bin/chef-client_ctl
   bin/chef-client.sh: bin/chef-client.sh
   config/validation.pem.erb: config/validation.pem
   config/client.rb.erb: config/client.rb
